@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body{
+    line-height: 1px;
+    background: #111;
+    text-align: center;
+    font-family: Arial;
+    color: white;
+}
+.login-register{
+    margin: 10% auto 0;
+}
+
+h1{
+    text-shadow: 0 1px 4px black;
+}
+
+form{
+    width: 305px;
+    margin: 15px auto 0;
+
+}
+input{
+    width: 270px;
+    height: 42px;
+    margin-top: 25px;
+    padding: 0 15px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1) inset;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    background: rgba(45, 45, 45, .15);
+    border-radius: 6px;
+    font-size: 14px;
+    color: white;
+}
+input:focus{
+    outline: 0;
+}
+
+input[type="submit"]{
+    cursor: pointer;
+    width: 303px;
+    height: 44px;
+    background: rgba(5, 46, 255, 0.71);
+    border-radius: 6px;
+    border: 0;
+    font-weight: 700;
+    text-shadow: 0 1px 2px black;
+}
+
+input[type="submit"]:hover{
+    box-shadow: 0 15px 30px 0 rgba(255, 255, 255, .15) inset;
+}
+
+button{
+    margin-top: 10px;
+    color: white;
+    cursor: pointer;
+    width: 303px;
+    height: 44px;
+    background: rgba(5, 46, 255, 0.71);
+    border-radius: 6px;
+    border: 0;
+    font-weight: 700;
+    text-shadow: 0 1px 2px black;
+}
+
+button:hover{
+    box-shadow: 0 15px 30px 0 rgba(255, 255, 255, .15) inset;
+}
+
