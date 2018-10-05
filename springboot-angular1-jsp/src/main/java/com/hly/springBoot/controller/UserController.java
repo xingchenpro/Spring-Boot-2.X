@@ -1,12 +1,13 @@
 package com.hly.springBoot.controller;
 
 
+import com.hly.springBoot.domain.User;
 import com.hly.springBoot.service.UserService;
 import com.hly.springBoot.util.ResponseUtil;
 import net.sf.json.JSONObject;
-import org.apache.catalina.User;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +22,7 @@ import java.io.IOException;
  * @github:https://github.com/SiriusHly
  * @date 2018年9月13日 下午6:22:04
  */
-@RestController
+@Controller
 @RequestMapping("/")
 public class UserController {
 
@@ -32,13 +33,17 @@ public class UserController {
    public String login(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		JSONObject result  = new JSONObject();
-		String username = request.getParameter("username");
+		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
-		User user = (User) userService.selectUserById(username);
-		if(user!=null)
-			result.put("result",1);
-		else
-			result.put("result",0);
+		System.err.println(userId);
+		User user = userService.selectUserById(userId);
+		System.err.println(user);
+		if(user!=null) {
+			result.put("result", 1);
+		}
+		else {
+			result.put("result", 0);
+		}
 		ResponseUtil.write(response,result);
 		return null;
 	}
@@ -54,7 +59,11 @@ public class UserController {
 
 			return null;
 	}
-	
 
+
+	@RequestMapping("/")
+	public String defaultView(){
+		return "login";
+	}
 
 }

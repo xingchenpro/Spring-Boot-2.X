@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  * @github:https://github.com/SiriusHly
  * @date 2018年9月12日 下午7:21:50
  */
-@Component
 public interface UserDao {
 	/**
 	 * 用户注册
