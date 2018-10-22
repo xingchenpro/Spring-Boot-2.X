@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang ="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <link rel="stylesheet" href="../static/css/login-register.css" th:href="@{/css/login-register.css}"/>
+   
+</head>
+<body>
+<div class="login-register">
+    <h1>SpringBoot框架注册</h1>
+
+    <form action="/register" method="post" id="RegisterForm" onsubmit="return checkForm()">
+        <div>
+            <input type="text" name="user_id" id="user_id" placeholder="您的用户名" />
+            <input type="password" name="user_password" id="user_password" placeholder="输入密码" />
+            <input type="password" name="user_confirm_password" id="user_confirm_password"  placeholder="再次输入密码"/>
+        </div>
+        <input type="submit" id="submit" value="注册" />
+    </form>
+
+    <a href="/login"><button type="button" >已有账号？</button></a>
+
+</div>
+<script type="text/javascript">
+
+/*<![CDATA[*/
+function checkForm(){
+	
+	
+	var user_id = document.getElementById("user_id").value;
+	var user_password = document.getElementById("user_password").value;
+	var user_confirm_password = document.getElementById("user_confirm_password").value;
+	
+	if(user_id!="" & user_password!="" & user_confirm_password!=""){
+		if(user_password!=user_confirm_password){
+			alert("两次密码输入不相同");
+		}else{
+			return true;
+		}
+		
+	
+	}else{
+		alert("请输入完整信息");
+	}
+}
+/*]]>*/
+
+
+</script>
+</body>
+</html>

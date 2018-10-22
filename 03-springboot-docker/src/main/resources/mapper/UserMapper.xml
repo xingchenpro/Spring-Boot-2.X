@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hly.springbootDocker.dao.UserDao">
+
+	<resultMap id="UserResult" type="User">
+		<result property="userId" column="user_id" />
+		<result property="userPassword" column="user_password" />
+	</resultMap>
+
+	<select id="selectUserById" parameterType="string" resultMap="UserResult">
+		select * from users where user_id = #{userId}
+	</select>
+	
+	<insert id ="insertUser" parameterType="User">
+	insert into users(user_id,user_password)values(#{userId},#{userPassword})
+	</insert>
+
+</mapper>

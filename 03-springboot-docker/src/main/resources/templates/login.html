@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang ="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <!--thymeleaf默认static路径  -->
+    <link rel="stylesheet" href="../static/css/login-register.css" th:href="@{/css/login-register.css}"/>
+    
+   
+
+</head>
+<body>
+
+<div class="login-register">
+    <h1>SpringBoot框架登录</h1>
+
+    <form action="/login" method="post" id="loginForm">
+        <!--autocomplete：其含义代表是否让浏览器自动记录之前输入的值-->
+        <div>
+            <input type="text" name="user_id" id="user_id"  placeholder="用户名" />
+            <input type="password" name="user_password" id="user_password"  placeholder="密码"/>
+        </div>
+
+ 
+        <input type="submit" id="submit" value="Login" />
+    </form>
+    
+    <a href="/register"><button type="button" >还有没有账号？</button></a>
+</div>
+
+
+<script th:src ="@{/plugins/jquery-1.4.4.min.js}"></script>
+<script>
+
+
+$(function(){
+	
+	
+	/* if(${error}){
+		alert("用户名或密码错误");
+	}
+	
+	if(${message}){
+		alert("欢迎回来");
+	}
+	 */
+});
+
+   
+  
+</script>
+</body>
+</html>
