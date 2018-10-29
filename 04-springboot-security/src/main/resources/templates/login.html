@@ -1,0 +1,35 @@
+<!--@author :hly
+@github :https://github.com/huangliangyun
+@blog :blog.csdn.net/Sirius_hly
+@date :2018/10/29
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Spring Security Login Page</h2>
+<p>User :hly / 123</p>
+<p th:if="${loginError}" class="error">用户名或密码错误</p>
+<form th:action="@{/login}" method="post">
+    <!--for 点击用户名获得焦点到input-->
+    <label for="username">用户名</label>
+    <!--autofocus="autofocus"在页面加载时自动获得焦点-->
+    <input type="text" id="username" name="username" autofocus="autofocus">
+    <label for="password">密码</label>
+    <input type="password" id="password" name="password">
+    <br/>
+    <input type="submit" value="login">
+    <p><a href="/index" th:href="@{/index}">返回首页</a></p>
+
+</form>
+
+
+
+
+
+
+</body>
+</html>
