@@ -4,12 +4,25 @@
 @date :2018/10/29
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h3>I am index page </h3>
+<h3>I am index page ,I am a not be protected page，any one can visit</h3>
+<div th:fragment="user" sec:authorize="isAuthenticated()">
+    登录用户：<span sec:authentication="name"></span>
+    用户角色：<span sec:authentication="principal.authorities"></span>
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="退出">
+        </form>
+    </div>
+</div>
+    <ol>
+        <li><a href="../templates/admin/admin.html" th:href="@{/admin}">查看被保护界面: /admin</a></li>
+    </ol>
+
 </body>
 </html>

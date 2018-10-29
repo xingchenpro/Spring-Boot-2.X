@@ -1,0 +1,31 @@
+<!--@author :hly
+@github :https://github.com/huangliangyun
+@blog :blog.csdn.net/Sirius_hly
+@date :2018/10/29
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+</head>
+<body>
+<h3>if you have [ROLE_ADMIN] authority ,you can delete article</h3>
+<table>
+    <tr>
+        <td><b>文章编号</b></td>
+        <td><b>文章标题</b></td>
+        <td><b>文章内容</b></td>
+    </tr>
+    <tr th:each="article:${articlesList}">
+        <td th:text="${article.id}"></td>
+        <td th:text="${article.title}"></td>
+        <td th:text="${article.content}"></td>
+        <td><a href="" th:href="@{'/article/'+${article.id}+'/deletion'}">删除</a></td>
+
+    </tr>
+</table>
+<div th:substituteby="index::user"></div>
+</body>
+</html>

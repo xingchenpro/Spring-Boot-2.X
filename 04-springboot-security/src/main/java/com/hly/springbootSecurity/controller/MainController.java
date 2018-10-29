@@ -24,10 +24,7 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("article/article")
-    public String article(){
-        return "article/article";
-    }
+
 
     //@RequestMapping将接收Get,Post,Head,Options等所有的请求方式
     @RequestMapping("/login")
@@ -41,14 +38,20 @@ public class MainController {
         return "login";
     }
 
+    @RequestMapping("/admin")
+    public String admin(){
+        return "admin/admin";
+    }
+
     //@RequestMapping(method = RequestMethod.GET)的缩写
     @GetMapping("401")
     public String error(){
         return "401";
     }
 
-
-
-
+    @GetMapping("/logout")
+    public String logout(){
+        return "/";
+    }
 
 }
