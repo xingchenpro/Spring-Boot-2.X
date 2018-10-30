@@ -27,7 +27,7 @@ public class ArticleServiceImpl implements ArticleService {
         list.add(new Article(5,"SQL","SQL从删库到跑路"));
         list.add(new Article(6,"SQL","SQL从删库到跑路"));
         list.add(new Article(7,"SQL","SQL从删库到跑路"));
-        System.err.println(list);
+        //System.err.println(list);
 
     }
 

@@ -1,0 +1,13 @@
+创建数据库 security 启动项目自动建表 ，插入以下数据
+
+insert into user(id,username,password) values(1,'hly','$2a$10$NmtmORbN/ATToou17gvjl.CUu1yTNxxRjsO2GOJUbJFsWd21pYmFi');
+insert into user(id,username,password) values(2,'user','$2a$10$NmtmORbN/ATToou17gvjl.CUu1yTNxxRjsO2GOJUbJFsWd21pYmFi');
+
+insert into role(id,name) values(1,'ROLE_USER');
+insert into role(id,name) values(2,'ROLE_ADMIN');
+
+insert into user_role(user_id,role_id) values(1,1);
+insert into user_role(user_id,role_id) values(1,2);
+insert into user_role(user_id,role_id) values(2,1);
+
+

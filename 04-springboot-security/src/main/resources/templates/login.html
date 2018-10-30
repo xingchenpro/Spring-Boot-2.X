@@ -12,7 +12,7 @@
 <body>
 <h2>Spring Security Login Page</h2>
 <p>USER | ADMIN ：hly / 123</p>
-<p>USER ：sirius / 123</p>
+<p>USER ：user / 123</p>
 <p th:if="${loginError}">用户名或密码错误</p>
 <form th:action="@{/login}" method="post">
     <!--for 点击用户名获得焦点到input-->
@@ -26,11 +26,6 @@
     <p><a href="/index" th:href="@{/index}">返回首页</a></p>
 
 </form>
-
-
-
-
-
 
 </body>
 </html>

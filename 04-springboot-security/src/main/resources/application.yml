@@ -9,3 +9,28 @@ spring:
     mode: HTML5
     # 禁止后实现前端热部署
     cache: false
+
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: roof
+      url: jdbc:mysql://localhost:3306/security?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true
+
+
+  jpa:
+          database: mysql
+          show-sql: true
+          hibernate:
+          # update 第一次加载model自动建立起表的结构
+          # create 每次加载删除重建表
+          # create-drop 每次加载生成表，sessionFactory关闭，表自动删除
+          # validate 验证表结构，不会创建表，会插入新的值
+            ddl-auto: update
+            naming:
+            # 遇到大写字母加 "_" 命名法
+            # org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+            # 无修改命名法
+              physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+          properties:
+             hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect

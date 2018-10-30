@@ -3,6 +3,7 @@ package com.hly.springbootSecurity.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -27,7 +28,7 @@ public class MainController {
 
 
     //@RequestMapping将接收Get,Post,Head,Options等所有的请求方式
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login")
     public String login(){
         return "login";
     }
