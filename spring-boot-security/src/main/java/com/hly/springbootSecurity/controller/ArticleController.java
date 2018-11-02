@@ -52,16 +52,9 @@ public class ArticleController {
         return new ModelAndView("article/list","articleModel",model);
     }
 
-
     @RequestMapping("/articleDetail")
     public String article(){
         return "article/articleDetail";
     }
-
-
-
-
-
-
 
 }

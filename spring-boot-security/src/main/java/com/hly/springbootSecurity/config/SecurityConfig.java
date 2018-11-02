@@ -19,10 +19,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @date :2018/10/29
  */
 
-
 @Configuration
 @EnableWebSecurity//开启WebSecurity功能
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)//开启方法上的保护
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //无视报错，程序运行时执行，编译器也许不知道
@@ -52,10 +51,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("hly").password(passwordEncoder().encode("123")).roles("USER", "ADMIN").and()
                 .withUser("user").password(passwordEncoder().encode("123")).roles("USER");*/
 
+        /*auth.inMemoryAuthentication()
+                //添加测试用户
+                .withUser("hly").password("$2a$10$NmtmORbN/ATToou17gvjl.CUu1yTNxxRjsO2GOJUbJFsWd21pYmFi").roles("USER", "ADMIN").and()
+                .withUser("user").password("$2a$10$NmtmORbN/ATToou17gvjl.CUu1yTNxxRjsO2GOJUbJFsWd21pYmFi").roles("USER");*/
+
         //从数据库中获取用户认证信息
         auth.userDetailsService(userDetailsService);
         //auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-}
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -76,6 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 //异常处理界面
                 .exceptionHandling().accessDeniedPage("/401");
+
         http.logout().logoutSuccessUrl("/");
     }
 
