@@ -16,21 +16,23 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
 
-
     @Autowired
     UserDao userDao;
 
     @ResponseBody
+    @RequestMapping("/home")
+    public String index(){
+        return "home";
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ResultBean login(@RequestParam(value="username",required=false)String username,@RequestParam(value="password",required=false)String password){
-        System.err.println(username);
-        if(password.equals(userDao.selectUserByUsername(username).getPassword()))
+    public ResultBean login(@RequestBody User user){
+        System.err.println(user);
+        if(user.getUsername().equals(userDao.selectUserByUsername(user.getUsername()).getPassword()))
             return  new ResultBean("success", "登录成功!");
         return  new ResultBean("error", "登录失败!");
     }
 
-    @RequestMapping("/")
-    public String index(){
-        return "/index";
-    }
+
 }
