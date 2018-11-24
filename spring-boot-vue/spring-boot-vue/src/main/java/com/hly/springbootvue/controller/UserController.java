@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /**
  * @author :hly
  * @github :https://github.com/huangliangyun
@@ -19,19 +23,29 @@ public class UserController {
     @Autowired
     UserDao userDao;
 
-    @ResponseBody
     @RequestMapping("/home")
     public String index(){
         return "home";
     }
 
     @ResponseBody
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ResultBean login(@RequestBody User user){
-        System.err.println(user);
-        if(user.getUsername().equals(userDao.selectUserByUsername(user.getUsername()).getPassword()))
-            return  new ResultBean("success", "登录成功!");
-        return  new ResultBean("error", "登录失败!");
+    @RequestMapping(value = "/login")
+    public ResultBean login(@RequestParam(value="username",required=false)String username,@RequestParam(value="password",required=false)String password , HttpServletResponse response) throws IOException {
+        System.err.println(username);
+        if(password.equals(userDao.selectUserByUsername(username).getPassword())) {
+            response.setContentType("application/json;charset=utf-8");
+            PrintWriter out = response.getWriter();
+            out.write("{\"status\":\"success\",\"msg\":\"登录成功\"}");
+            out.flush();
+            out.close();
+        }else {
+            response.setContentType("application/json;charset=utf-8");
+            PrintWriter out = response.getWriter();
+            out.write("{\"status\":\"error\",\"msg\":\"登录失败\"}");
+            out.flush();
+            out.close();
+        }
+        return  null;
     }
 
 

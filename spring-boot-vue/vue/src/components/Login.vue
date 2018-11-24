@@ -2,7 +2,7 @@
 <form>
   <input type="text" v-model="loginForm.username" />
   <input type="password" v-model="loginForm.password" />
-  <input type="button" @click.native.prevent="submitClick" value="登录"/>
+  <input type="button" @click="submitClick" value="登录"/>
 </form>
 </template>
 
@@ -11,39 +11,45 @@
   export default {
     data(){
       return {
+        rules: {
+          account: [{required: true, message: '请输入用户名', trigger: 'blur'}],
+          checkPass: [{required: true, message: '请输入密码', trigger: 'blur'}]
+        },
+        checked: true,
         loginForm: {
-          username: 'sang',
+          username: 'hly',
           password: '123'
         },
         loading: false
       }
     },
-  method: {
-    submitClick: function () {
-      alert('sss');
-      var _this = this;
-      this.loading = true;
-      postRequest('/login',{
-        username:this.loginForm.username,
-        password:this.loginForm.password
-      }).then(resp=> {
-        _this.loading = false;
-        if(resp.status ==200){
-          var json = resp.data;
-          if(json.status == 'success'){
-            _this.$router.replace({path: '/home'});
-          }else {
-            alert('登录失败');
+    methods: {
+      submitClick: function () {
+        var _this = this;
+        this.loading = true;
+        postRequest('/login', {
+          username: this.loginForm.username,
+          password: this.loginForm.password
+        }).then(resp=> {
+          _this.loading = false;
+          if (resp.status == 200) {
+            //成功
+            var json = resp.data;
+            if (json.status == 'success') {
+              _this.$router.replace({path: '/home'});
+            } else {
+              alert('登录失败!');
+            }
+          } else {
+            //失败
+            alert('登录失败!');
           }
-        }else {
-          alert('登录失败');
-        }
-      },resp=>{
-        _this.loading = false;
-        _this.alert('找不到服务器⊙﹏⊙∥!');
+        }, resp=> {
+          _this.loading = false;
+          alert('找不到服务器⊙﹏⊙∥!');
         });
+      }
     }
-  }
 }
 </script>
 

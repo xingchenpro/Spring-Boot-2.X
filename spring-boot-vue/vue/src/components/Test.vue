@@ -2,15 +2,15 @@
   <form>
     <input type="text" placeholder="用户名"/>
     <input type="password" placeholder="密码"/>
-    <input type="button" @click.native.prevent="submitClick" value="登录"/>
+    <input type="button" @click="submitClick" value="登录"/>
   </form>
 </template>
 
 <script>
   export default {
-    method: {
+    methods: {
       submitClick: function () {
-        alert('sss');
+        alert('登录!');
       }
     }
   }
