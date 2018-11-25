@@ -13,19 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-/**
- * @author :hly
- * @github :https://github.com/huangliangyun
- * @blog :blog.csdn.net/Sirius_hly
- * @date :2018/10/29
- */
 @Controller
 
 public class ArticleController {
 
     @Autowired
     ArticleService articleService;
-
     /**
      * 查看文章列表
      * @param model
@@ -37,7 +30,6 @@ public class ArticleController {
         model.addAttribute("articlesList",list);
         return new ModelAndView("article/list","articleModel",model);
     }
-
     /**
      * 给方法设置权限,没有ADMIN权限的用户不能删除文章
      * @param id
@@ -51,10 +43,8 @@ public class ArticleController {
         model.addAttribute("articlesList",articleService.getArticles());
         return new ModelAndView("article/list","articleModel",model);
     }
-
     @RequestMapping("/articleDetail")
     public String article(){
         return "article/articleDetail";
     }
-
 }

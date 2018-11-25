@@ -8,12 +8,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * @author :hly
- * @github :https://github.com/huangliangyun
- * @blog :blog.csdn.net/Sirius_hly
- * @date :2018/10/29
- */
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
@@ -28,7 +22,6 @@ public class ArticleServiceImpl implements ArticleService {
         list.add(new Article(6,"SQL","SQL从删库到跑路"));
         list.add(new Article(7,"SQL","SQL从删库到跑路"));
         //System.err.println(list);
-
     }
 
     @Override

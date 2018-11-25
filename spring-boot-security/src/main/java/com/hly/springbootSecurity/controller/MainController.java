@@ -6,12 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * @author :hly
- * @github :https://github.com/huangliangyun
- * @blog :blog.csdn.net/Sirius_hly
- * @date :2018/10/29
- */
+
 @Controller
 public class MainController {
 
@@ -49,6 +44,7 @@ public class MainController {
     public String error(){
         return "401";
     }
+
 
     @GetMapping("/logout")
     public String logout(){

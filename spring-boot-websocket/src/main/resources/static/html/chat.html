@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang ="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>chat</title>
+    <link rel="stylesheet" href="../css/chat.css" type="text/css">
+    <script type="text/javascript" src="../js/chat_static.js"></script>
+</head>
+<body>
+<div>
+
+    <!--聊天界面开始-->
+    <div class="chat_index">
+        <!--banner-->
+        <div class="chat_banner"></div>
+
+        <div class="chat_body">
+            <!--在线列表-->
+            <div class="chat_online">
+                <!--搜索-->
+                <div class="search_online">
+                    <form>
+                        <input type="text" placeholder="搜索联系人">
+                    </form>
+                </div>
+                <!--在线列表开始-->
+                <div class="online_friend">
+                    <ul>
+                        <li>
+                            <div class="a_friend">
+                                <div class="head_portrait">
+                                    <div class="head_text">
+                                        黄
+                                    </div>
+                                </div>
+                                <div class="friend">
+                                    <div class="name">hly</div>
+                                    <div class="this_time">4-12-15:10</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--在线列表结束-->
+
+            </div>
+            <!--消息界面开始-->
+            <div class="chat_main">
+                <div class="chat_div">
+                    <ul id="chat_ul" class="chat_content">
+                    </ul>
+                </div>
+                <!--发送消息开始-->
+                <div class="send_message">
+                    <form>
+                        <input type="text" placeholder="请输入消息" id="send_txt">
+                        <input type="button" value="发送" id="send_btn" onclick="setMSGInHtml()">
+                    </form>
+                </div>
+                <!--发送消息结束-->
+            </div>
+            <!--消息界面结束-->
+
+            <!--名片开始-->
+            <div class="chat_namecard"></div>
+
+        </div>
+    </div>
+    <!--聊天界面结束-->
+
+</div>
+</body>
+</html>

@@ -1,8 +1,3 @@
-<!--@author :hly
-@github :https://github.com/huangliangyun
-@blog :blog.csdn.net/Sirius_hly
-@date :2018/10/29
--->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
@@ -11,11 +6,8 @@
 </head>
 <body>
 <h3>I am admin page ,I am be protected by Spring Security, USER role can visit me!</h3>
-
 <p><a href="../../templates/article/list.html" th:href="@{/article}" >管理文章</a></p>
 <p><a href="../../templates/index.html" th:href="@{/index}" >返回首页</a></p>
 <div th:substituteby="index::user"></div>
-
-
 </body>
 </html>

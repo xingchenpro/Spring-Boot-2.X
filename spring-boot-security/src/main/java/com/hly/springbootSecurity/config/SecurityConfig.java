@@ -12,12 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-/**
- * @author :hly
- * @github :https://github.com/huangliangyun
- * @blog :blog.csdn.net/Sirius_hly
- * @date :2018/10/29
- */
 
 @Configuration
 @EnableWebSecurity//开启WebSecurity功能
@@ -60,7 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService);
         //auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -80,7 +73,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 //异常处理界面
                 .exceptionHandling().accessDeniedPage("/401");
-
         http.logout().logoutSuccessUrl("/");
     }
 
