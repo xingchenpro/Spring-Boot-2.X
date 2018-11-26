@@ -1,6 +1,7 @@
 package com.hly.springBootRedis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +20,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
+    //只针对键值对都是字符型的数据进行操作
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @RequestMapping("/")
     public ModelAndView login_page(){
@@ -29,19 +34,20 @@ public class UserController {
        return modelAndView;
     }
 
-    /*@RequestMapping("/login")
+    @RequestMapping("/login")
     public String login(@RequestParam("username") String username,@RequestParam("password") String password){
-        if(stringRedisTemplate.opsForValue().get(username).equals(password))
+        if(redisTemplate.opsForValue().get(username).equals(password))
             return "redirect:/admin";
         return "redirect:/";
-    }*/
+    }
 
-    @RequestMapping("/login")
+    //分布式Session
+    /*@RequestMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session){
        if(session.getAttribute("uuid")!=null)
             return "redirect:/admin";
         return "redirect:/";
-    }
+    }*/
 
     @ResponseBody
     @RequestMapping("/admin")

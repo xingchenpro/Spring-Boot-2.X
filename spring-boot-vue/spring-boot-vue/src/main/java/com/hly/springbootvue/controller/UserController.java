@@ -30,7 +30,7 @@ public class UserController {
         return "home";
     }
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public ResultBean login(@RequestParam(value="username",required=false)String username,@RequestParam(value="password",required=false)String password , HttpServletResponse response) throws IOException {
         System.err.println(username+": "+password);
         if(password.equals(userDao.selectUserByUsername(username).getPassword())) {
@@ -49,6 +49,5 @@ public class UserController {
         }
         return  null;
     }
-
 
 }
