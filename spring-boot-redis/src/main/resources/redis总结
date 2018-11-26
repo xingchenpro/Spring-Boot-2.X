@@ -1,0 +1,12 @@
+集群环境下，每台服务器的spring cache是不同步的，这样会出问题的，spring cache只适合单机环境
+redis是设置单独的缓存服务器，所有集群服务器统一访问redis，不会出现缓存不同步的情况
+
+集群环境下，每台服务器的spring cache是不同步的，这样会出问题的，spring cache只适合单机环境
+redis是设置单独的缓存服务器，所有集群服务器统一访问redis，不会出现缓存不同步的情况
+
+spring cache是很早就有的东西，现在+redis是为了顺应时代，更好的兼容集群环境，加强保留spring cache功能，不如直接使用redis
+
+spring cache 是基于注解的，对代码侵入比较小，但是支持的api太少了，不能满足大部分业务需求。
+redis基于api，优点是api类型多，缺点是(业务代码入侵)
+
+https://blog.csdn.net/Idowww/article/details/80971166

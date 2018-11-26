@@ -1,6 +1,7 @@
 package com.hly.springBootRedis.controller;
 
 import com.hly.springBootRedis.entity.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,7 +22,7 @@ import java.util.List;
 public class CacheController {
 
     /**
-     * value的值就是缓存到redis中的key
+     * value：缓存的名字
      * key 使用SpEL表达式自定义的缓存Key，比如：#username是以参数username为key的缓存，##user.username是以返回结果的username作为key的缓存；
      * @return
      */
@@ -92,5 +94,14 @@ public class CacheController {
     public String delCacheByName(User user) {
         //删除后redis中还有
         return "按名字删除缓存";
+    }
+
+    @Cacheable(value = "java")
+    @GetMapping("/cache/test")
+    public User testUser(HashMap<String,User> map) {
+        User user = new User("java","123");
+        map.put("java",user);
+        System.err.println(map);
+        return map.get("java");
     }
 }

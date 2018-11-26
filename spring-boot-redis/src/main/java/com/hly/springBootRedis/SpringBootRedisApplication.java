@@ -14,3 +14,6 @@ public class SpringBootRedisApplication {
 		SpringApplication.run(SpringBootRedisApplication.class, args);
 	}
 }
+
+//https://blog.csdn.net/moshowgame/article/details/80792774
+//http://www.ityouknow.com/springboot/2016/03/06/spring-boot-redis.html

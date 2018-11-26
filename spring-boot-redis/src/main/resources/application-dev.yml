@@ -1,6 +1,7 @@
 spring:
-
-
+  cache:
+      redis:
+        time-to-live: 60s
   datasource:
       type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.jdbc.Driver

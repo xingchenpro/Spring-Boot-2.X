@@ -24,7 +24,7 @@ public class RedisController {
     @RequestMapping("redis/addUser")
     public User addUser(){
         User  user = new User();
-        user.setUsername("hly");
+        user.setUsername("java");
         user.setPassword("123");
         ValueOperations<String,User> operations = redisTemplate.opsForValue();
         operations.set("user",user);
