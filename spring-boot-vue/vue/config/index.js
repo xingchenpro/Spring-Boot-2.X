@@ -6,11 +6,12 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    //跨域
     proxyTable: {
+      //别名
       '/': {
         target: 'http://localhost:8081',
         changeOrigin: true,

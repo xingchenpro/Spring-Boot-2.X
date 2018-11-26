@@ -23,21 +23,23 @@ public class UserController {
     @Autowired
     UserDao userDao;
 
+    @ResponseBody
     @RequestMapping("/home")
     public String index(){
+        System.err.println("这里是home");
         return "home";
     }
 
-    @ResponseBody
     @RequestMapping(value = "/login")
     public ResultBean login(@RequestParam(value="username",required=false)String username,@RequestParam(value="password",required=false)String password , HttpServletResponse response) throws IOException {
-        System.err.println(username);
+        System.err.println(username+": "+password);
         if(password.equals(userDao.selectUserByUsername(username).getPassword())) {
             response.setContentType("application/json;charset=utf-8");
             PrintWriter out = response.getWriter();
             out.write("{\"status\":\"success\",\"msg\":\"登录成功\"}");
             out.flush();
             out.close();
+
         }else {
             response.setContentType("application/json;charset=utf-8");
             PrintWriter out = response.getWriter();
