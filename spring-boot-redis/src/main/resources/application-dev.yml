@@ -1,7 +1,10 @@
 spring:
   cache:
       redis:
-        time-to-live: 60s
+        time-to-live: 100000 # #缓存超时时间ms @Bean配置后，这里的配置无效
+        # cache-null-values: false #是否缓存空值
+      type: redis
+
   datasource:
       type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.jdbc.Driver

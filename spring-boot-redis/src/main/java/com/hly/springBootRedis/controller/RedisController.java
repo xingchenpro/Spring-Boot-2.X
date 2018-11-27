@@ -3,6 +3,7 @@ package com.hly.springBootRedis.controller;
 import com.hly.springBootRedis.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,10 @@ import java.util.concurrent.TimeUnit;
 @RestController
 public class RedisController {
 
+    //只针对键值对都是字符型的数据进行操作
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
     @Autowired
     private RedisTemplate redisTemplate;
 
@@ -28,6 +33,7 @@ public class RedisController {
         user.setPassword("123");
         ValueOperations<String,User> operations = redisTemplate.opsForValue();
         operations.set("user",user);
+        //System.err.println(operations.get("user"));
         //operations.set("user",user,1, TimeUnit.SECONDS);
         return user;
     }

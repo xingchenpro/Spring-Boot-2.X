@@ -34,20 +34,20 @@ public class UserController {
        return modelAndView;
     }
 
-    @RequestMapping("/login")
+    /*@RequestMapping("/login")
     public String login(@RequestParam("username") String username,@RequestParam("password") String password){
         if(redisTemplate.opsForValue().get(username).equals(password))
             return "redirect:/admin";
         return "redirect:/";
-    }
+    }*/
 
     //分布式Session
-    /*@RequestMapping("/login")
+    @RequestMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session){
        if(session.getAttribute("uuid")!=null)
             return "redirect:/admin";
         return "redirect:/";
-    }*/
+    }
 
     @ResponseBody
     @RequestMapping("/admin")

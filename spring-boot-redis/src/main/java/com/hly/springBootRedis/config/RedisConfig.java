@@ -15,15 +15,13 @@ import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializationContext;
-import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.data.redis.serializer.*;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * @author :hly
@@ -35,8 +33,8 @@ import java.util.Map;
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
-    //设置缓存的键值和参数
-    @Bean
+    //设置缓存的键值和参数,加上了包名和方法名，可以不配置
+    /*@Bean
     public KeyGenerator keyGenerator() {
         return new KeyGenerator() {
             @Override
@@ -50,25 +48,22 @@ public class RedisConfig extends CachingConfigurerSupport {
                 return sb.toString();
             }
         };
-    }
-
-    //解决Cache序列化乱码
+    }*/
+    //解决Cache序列化乱码即类型无法转化问题
     @Bean
-    public CacheManager cacheManager(RedisConnectionFactory factory) {
-        RedisSerializer<String> redisSerializer = new StringRedisSerializer();
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
-
-        // 配置序列化
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
-        RedisCacheConfiguration redisCacheConfiguration = config.serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer));
-
-        RedisCacheManager cacheManager = RedisCacheManager.builder(factory)
-                .cacheDefaults(redisCacheConfiguration)
-                .build();
+    CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
+        //初始化一个RedisCacheWriter
+        RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(connectionFactory);
+        //设置CacheManager的值序列化方式
+        ClassLoader loader = this.getClass().getClassLoader();
+        JdkSerializationRedisSerializer jdkSerializer = new JdkSerializationRedisSerializer(loader);
+        RedisSerializationContext.SerializationPair<Object> pair = RedisSerializationContext.SerializationPair.fromSerializer(jdkSerializer);
+        RedisCacheConfiguration defaultCacheConfig=RedisCacheConfiguration.defaultCacheConfig().serializeValuesWith(pair).entryTtl(Duration.ofSeconds(30));
+        //.disableCachingNullValues();//不保存空值
+        //初始化RedisCacheManager
+        RedisCacheManager cacheManager = new RedisCacheManager(redisCacheWriter, defaultCacheConfig);
         return cacheManager;
     }
-
 
     //配置序列化，不然会出现 \xAC\xED\x00\x05t\x00\x06之类的
     @Bean

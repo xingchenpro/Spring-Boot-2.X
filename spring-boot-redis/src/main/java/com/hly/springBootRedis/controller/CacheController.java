@@ -1,7 +1,6 @@
 package com.hly.springBootRedis.controller;
 
 import com.hly.springBootRedis.entity.User;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -48,7 +46,7 @@ public class CacheController {
         return users;
     }
 
-    //增加，修改
+    //增加，修改缓存到空方法
     @CachePut(value = "user")
     @GetMapping("/cache/update")
     public List<User> updateUsers() {
@@ -72,9 +70,16 @@ public class CacheController {
     //http://localhost:8080/cache/object?username=hly
     @Cacheable(value = "user",key="#user.username")
     @GetMapping("/cache/object")
-    public User getUser(User user) {
+    public User getUserOfAdd(User user) {
         user.setUsername("hly");
         user.setPassword("129");
+        return user;
+    }
+
+    //直接拿到
+    @Cacheable(value = "user",key="#user.username")
+    @GetMapping("/cache/object/get")
+    public User getUser(User user) {
         return user;
     }
 
@@ -96,12 +101,11 @@ public class CacheController {
         return "按名字删除缓存";
     }
 
-    @Cacheable(value = "java")
-    @GetMapping("/cache/test")
-    public User testUser(HashMap<String,User> map) {
-        User user = new User("java","123");
-        map.put("java",user);
-        System.err.println(map);
-        return map.get("java");
-    }
+    /*@GetMapping("/cache/test")
+    @Cacheable(value = "user",key = "#str")
+    public String test(String str) {
+        str = "hl";
+        //删除后redis中还有
+        return str;
+    }*/
 }

@@ -9,4 +9,16 @@ spring cache是很早就有的东西，现在+redis是为了顺应时代，更�
 spring cache 是基于注解的，对代码侵入比较小，但是支持的api太少了，不能满足大部分业务需求。
 redis基于api，优点是api类型多，缺点是(业务代码入侵)
 
+对于一个支持缓存的方法，Spring会在其被调用后将其返回值缓存起来，以保证下次利用同样的参数来执行该方法时可以直接从缓存中获取结果，而不需要再次执行该方法
+
+
+Spring cache+ redis与redis 的比较
 https://blog.csdn.net/Idowww/article/details/80971166
+
+cache 与 redis
+https://www.cnblogs.com/chenkeyu/p/8028781.html
+
+
+Cache配置
+http://rickgong.iteye.com/blog/2414263
+
