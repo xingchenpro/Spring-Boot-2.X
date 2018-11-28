@@ -21,7 +21,7 @@ public class CacheController {
 
     /**
      * value：缓存的名字
-     * key 使用SpEL表达式自定义的缓存Key，比如：#username是以参数username为key的缓存，##user.username是以返回结果的username作为key的缓存；
+     * key 使用SpEL表达式自定义的缓存Key，比如：#username是以参数username为key的缓存
      * @return
      */
 
@@ -36,7 +36,6 @@ public class CacheController {
         users.add(user2);
         return users;
     }
-
 
     //空方法，拿上面方法的缓存
     @GetMapping("/cache/all")
@@ -64,7 +63,6 @@ public class CacheController {
         //删除后redis中还有
         return "以删除所有缓存";
     }
-
 
     //EL表达式来指定的key，有则取出，无则放入缓存,返回到方法User返回参数，没有则设置User user
     //http://localhost:8080/cache/object?username=hly
@@ -101,11 +99,4 @@ public class CacheController {
         return "按名字删除缓存";
     }
 
-    /*@GetMapping("/cache/test")
-    @Cacheable(value = "user",key = "#str")
-    public String test(String str) {
-        str = "hl";
-        //删除后redis中还有
-        return str;
-    }*/
 }

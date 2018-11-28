@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>401页面，没有权限</h3>
+<div>
+    <div>
+        <h3>权限不够，拒绝访问</</h3>
+    </div>
+
+    <div th:fragment="user" sec:authorize="isAuthenticated()">
+        登录用户：<span sec:authentication="name"></span>
+        用户角色：<span sec:authentication="principal.authorities"></span>
+        <div>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="退出">
+            </form>
+        </div>
+    </div>
+
+    <div sec:authorize="isAnonymous()">
+        <p>未有用户登录</p>
+    </div>
+
+</div>
+</body>
+</html>
