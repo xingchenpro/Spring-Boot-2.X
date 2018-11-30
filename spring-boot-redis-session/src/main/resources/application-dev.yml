@@ -1,6 +1,4 @@
 spring:
-
-
   datasource:
       type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.jdbc.Driver
@@ -30,7 +28,6 @@ spring:
     # 链接超时使劲
     timeout: 10000
 
-
     # 配置前端Thymeleaf模板引擎
   thymeleaf:
   # 打包末尾无/
@@ -49,8 +46,6 @@ mybatis:
   # Mybatis映射
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.hly.sirius.domain
-
-
 
 # 端口设置
 server:
