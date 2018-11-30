@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.UUID;
 
 /**
  * @author :hly
@@ -40,6 +41,17 @@ public class UserController {
             return "redirect:/admin";
         return "redirect:/";
     }*/
+
+    @ResponseBody
+    @RequestMapping("/uuid")
+    public String sessionTest(HttpSession session){
+        UUID uuid = (UUID)session.getAttribute("uuid");
+        if(uuid == null){
+            uuid = UUID.randomUUID();
+        }
+        session.setAttribute("uuid",uuid);
+        return session.getId();
+    }
 
     //分布式Session
     @RequestMapping("/login")

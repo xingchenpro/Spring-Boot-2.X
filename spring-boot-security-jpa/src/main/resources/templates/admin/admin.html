@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<h3>I am admin page ,I am be protected by Spring Security, USER role can visit me!</h3>
+<h3>拥有权限才能访问该页面</h3>
 <p><a href="../../templates/article/list.html" th:href="@{/article}" >管理文章</a></p>
 <p><a href="../../templates/index.html" th:href="@{/index}" >返回首页</a></p>
 <div th:substituteby="index::user"></div>

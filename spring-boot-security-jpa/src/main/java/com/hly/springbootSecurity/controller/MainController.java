@@ -28,7 +28,7 @@ public class MainController {
         return "login";
     }
 
-    @RequestMapping("/login-error")
+    @RequestMapping("/loginError")
     public String loginError(ModelAndView modelAndView){
         modelAndView.addObject("loginError",true);
         return "login";

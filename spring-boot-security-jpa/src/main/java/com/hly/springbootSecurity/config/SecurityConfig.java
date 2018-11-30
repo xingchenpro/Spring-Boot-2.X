@@ -65,11 +65,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //不需要验证的资源
                 .antMatchers("/css/**", "/index").permitAll()
                 //需要验证，角色为Role
-                .antMatchers("/admin/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/article/**").hasRole("ADMIN")
+                .antMatchers("/article/**").hasAnyRole("ADMIN","STUDENT","TEACHER")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN","STUDENT","TEACHER")
                 .and()
                 //表单的登录地址和失败地址
-                .formLogin().loginPage("/login").failureForwardUrl("/login-error")
+                .formLogin().loginPage("/login").failureForwardUrl("/loginError")
                 .and()
                 //异常处理界面
                 .exceptionHandling().accessDeniedPage("/401");

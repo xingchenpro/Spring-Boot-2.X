@@ -26,6 +26,7 @@ public class CacheController {
      */
 
     //把集合写入redis，放进缓存
+    //http://localhost:8080/cache/addUsers
     @GetMapping("/cache/addUsers")
     @Cacheable(value = "user")//读取数据到方法上，先从缓存中读取，没有再从数据库中读取
     public List<User> postAllUser() {
@@ -38,6 +39,7 @@ public class CacheController {
     }
 
     //空方法，拿上面方法的缓存
+    //http://localhost:8080/cache/all
     @GetMapping("/cache/all")
     @Cacheable(value = "user")//读取数据到方法上，先从缓存中读取，没有再从数据库中读取
     public List<User> getAllUser() {
@@ -46,6 +48,7 @@ public class CacheController {
     }
 
     //增加，修改缓存到空方法
+    //http://localhost:8080/cache/update
     @CachePut(value = "user")
     @GetMapping("/cache/update")
     public List<User> updateUsers() {
@@ -75,6 +78,7 @@ public class CacheController {
     }
 
     //直接拿到
+    //http://localhost:8080/cache/object/get/?username=hly
     @Cacheable(value = "user",key="#user.username")
     @GetMapping("/cache/object/get")
     public User getUser(User user) {
@@ -82,6 +86,7 @@ public class CacheController {
     }
 
     //根据键值，增加，修改
+    //http://localhost:8080/cache/update/object/?username=hly
     @CachePut(value = "user",key="#user.username")
     @GetMapping("/cache/update/object")
     public User updateUser(User user) {

@@ -27,13 +27,18 @@ public class RedisController {
     private RedisTemplate redisTemplate;
 
     @RequestMapping("redis/addUser")
-    public User addUser(){
+    public User addUserByRedis(){
+        //保存对象
         User  user = new User();
-        user.setUsername("java");
+        user.setUsername("hly");
         user.setPassword("123");
         ValueOperations<String,User> operations = redisTemplate.opsForValue();
         operations.set("user",user);
-        //System.err.println(operations.get("user"));
+        System.err.println(operations.get("user"));
+
+        ValueOperations operations1 = stringRedisTemplate.opsForValue();
+        operations1.set("hly","123");
+        System.err.println(operations1.get("hly"));
         //operations.set("user",user,1, TimeUnit.SECONDS);
         return user;
     }

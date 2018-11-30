@@ -23,13 +23,6 @@ public class UserController {
     @Autowired
     UserDao userDao;
 
-    @ResponseBody
-    @RequestMapping("/home")
-    public String index(){
-        System.err.println("这里是home");
-        return "home";
-    }
-
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public ResultBean login(@RequestParam(value="username",required=false)String username,@RequestParam(value="password",required=false)String password , HttpServletResponse response) throws IOException {
         System.err.println(username+": "+password);
