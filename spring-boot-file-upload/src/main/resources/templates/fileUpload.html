@@ -1,0 +1,24 @@
+<!--@author :hly
+@github :https://github.com/huangliangyun
+@blog :blog.csdn.net/Sirius_hly
+@date :2018/12/4
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>fileUpload Example</title>
+</head>
+<body>
+
+
+<p th:if="${message}" th:text="${message}"></p>
+
+<form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="上传">
+</form>
+
+
+</body>
+</html>
