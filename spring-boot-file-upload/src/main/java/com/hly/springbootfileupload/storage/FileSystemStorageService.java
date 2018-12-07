@@ -30,9 +30,11 @@ public class FileSystemStorageService implements StorageService {
 
     @Autowired
     public FileSystemStorageService(StorageProperties properties) {
+        //获取文件存储路径
         this.rootLocation = Paths.get(properties.getLocation());
     }
 
+    //上传文件
     @Override
     public void store(MultipartFile file) {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
