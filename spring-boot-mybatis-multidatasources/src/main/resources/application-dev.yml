@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    article-service:
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: roof
+      jdbc-url: jdbc:mysql://localhost:3306/articleservice?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true
+
+    video-service:
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: roof
+      jdbc-url: jdbc:mysql://localhost:3306/videoservice?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true
+
+# 端口设置
+server:
+  port: 8083
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+
+
+

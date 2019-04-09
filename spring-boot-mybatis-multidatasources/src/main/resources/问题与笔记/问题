@@ -1,0 +1,17 @@
+
+1.jdbcUrl is required with driverClassName.] with root cause
+多数据源 .yml配置改为 url 改为 jdbc-url:
+
+2.用mybatis传入参数,如果参数类型是String ,InInteger,等这些时。如果用他的标签判断该参数是否为空,通常会爆
+There is no getter for property named 'a_id' in 'class java.lang.Integer'
+
+(1)解决方法1:
+
+在接口中该方法的参数前加上@Param(“参数名”)注解。
+StarBeauticianRecord selectByPrimaryKey(@Param(value="id")Integer id);
+
+(2)解决方法2:
+在 xml文件中应该使用_parameter来代替参数名。
+<if test="_parameter!= null" >
+       and  id = #{_parameter}
+</if>
