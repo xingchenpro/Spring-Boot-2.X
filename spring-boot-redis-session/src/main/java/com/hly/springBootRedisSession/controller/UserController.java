@@ -1,5 +1,6 @@
 package com.hly.springBootRedisSession.controller;
 
+import com.hly.springBootRedisSession.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -23,10 +25,10 @@ public class UserController {
     private StringRedisTemplate stringRedisTemplate;
 
     @RequestMapping("/")
-    public ModelAndView login_page(){
-       ModelAndView modelAndView = new ModelAndView();
-       modelAndView.setViewName("/login");
-       return modelAndView;
+    public ModelAndView login_page() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/login");
+        return modelAndView;
     }
 
     /*@RequestMapping("/login")
@@ -37,15 +39,26 @@ public class UserController {
     }*/
 
     @RequestMapping("/login")
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session){
-       if(session.getAttribute("uuid")!=null)
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
+        if (session.getAttribute("uuid") != null)
             return "redirect:/admin";
         return "redirect:/";
     }
 
     @ResponseBody
     @RequestMapping("/admin")
-    public String admin(){
+    public String admin() {
         return "admin";
+    }
+
+    @ResponseBody
+    @RequestMapping("/getUserName")
+    public Result getUserName(HttpServletRequest request) {
+        Result result = new Result();
+        String username = (String) request.getSession().getAttribute("username");
+        System.err.println(request.getSession());
+        System.err.println(username);
+        result.setResult(username);
+        return result;
     }
 }

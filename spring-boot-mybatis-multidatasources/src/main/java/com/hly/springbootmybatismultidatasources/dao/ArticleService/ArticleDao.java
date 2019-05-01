@@ -1,4 +1,4 @@
-package com.hly.springbootmybatismultidatasources.dao.ArticleService;
+package com.hly.springbootmybatismultidatasources.dao.articleService;
 
 import com.hly.springbootmybatismultidatasources.entity.Article;
 import org.springframework.stereotype.Repository;
@@ -16,6 +16,5 @@ import java.util.List;
 public interface ArticleDao {
 
     List<Article> getArticles();
-
 
 }

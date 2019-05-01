@@ -58,7 +58,7 @@ mybatis:
 
 # 端口设置
 server:
-  port: 8080
+  port: 8084
 
 
 

@@ -1,5 +1,4 @@
 package com.hly.springbootmybatismultidatasources.config;
-
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,9 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-
 import javax.sql.DataSource;
-import java.io.IOException;
 
 /**
  * @author :hly
@@ -24,7 +21,7 @@ import java.io.IOException;
  */
 @Configuration
 //配置mbatis接口
-@MapperScan(basePackages = "com.hly.springbootmybatismultidatasources.dao.ArticleService", sqlSessionFactoryRef = "articleServiceSqlSessionFactory")
+@MapperScan(basePackages = "com.hly.springbootmybatismultidatasources.dao.articleService", sqlSessionFactoryRef = "articleServiceSqlSessionFactory")
 public class ArticleServiceDataSourceConfig {
 
     //将对象放入容器中
@@ -53,8 +50,4 @@ public class ArticleServiceDataSourceConfig {
     public SqlSessionTemplate articleServiceSqlSessionTemplate(@Qualifier("articleServiceSqlSessionFactory") SqlSessionFactory sqlSessionFactory){
         return new SqlSessionTemplate(sqlSessionFactory);
     }
-
-
-
-
 }

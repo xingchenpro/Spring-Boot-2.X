@@ -9,7 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
@@ -23,7 +22,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 //配置mybatis接口
-@MapperScan(basePackages = "com.hly.springbootmybatismultidatasources.dao.VideoService", sqlSessionFactoryRef = "videoServiceSqlSessionFactory")
+@MapperScan(basePackages = "com.hly.springbootmybatismultidatasources.dao.videoService", sqlSessionFactoryRef = "videoServiceSqlSessionFactory")
 public class VideoServiceDataSourceConfig {
 
     //将对象放入容器中

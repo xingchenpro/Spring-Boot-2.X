@@ -1,13 +1,10 @@
 package com.hly.springbootmybatismultidatasources.controller;
 
-import com.hly.springbootmybatismultidatasources.dao.ArticleService.ArticleDao;
-import com.hly.springbootmybatismultidatasources.dao.VideoService.VideoDao;
-import com.hly.springbootmybatismultidatasources.entity.Article;
+import com.hly.springbootmybatismultidatasources.dao.articleService.ArticleDao;
+import com.hly.springbootmybatismultidatasources.dao.videoService.VideoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * @author :hly

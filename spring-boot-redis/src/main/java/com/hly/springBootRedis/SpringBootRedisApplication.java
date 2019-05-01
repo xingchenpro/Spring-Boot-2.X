@@ -13,6 +13,8 @@ public class SpringBootRedisApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootRedisApplication.class, args);
 	}
+
+
 }
 
 //https://blog.csdn.net/moshowgame/article/details/80792774

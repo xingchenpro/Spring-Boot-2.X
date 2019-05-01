@@ -1,4 +1,4 @@
-package com.hly.springbootmybatismultidatasources.dao.VideoService;
+package com.hly.springbootmybatismultidatasources.dao.videoService;
 
 import com.hly.springbootmybatismultidatasources.entity.Video;
 import org.apache.ibatis.annotations.Param;
