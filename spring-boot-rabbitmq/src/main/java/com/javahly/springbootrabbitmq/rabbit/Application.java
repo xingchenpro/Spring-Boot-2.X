@@ -1,7 +1,5 @@
 package com.javahly.springbootrabbitmq.rabbit;
 
-
-import com.javahly.springbootrabbitmq.SpringBootRabbitmqApplication;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -12,7 +10,6 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
 
 @SpringBootApplication
 public class Application {
@@ -54,7 +51,6 @@ public class Application {
     public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(Application.class, args).close();
     }
-
 }
 
 

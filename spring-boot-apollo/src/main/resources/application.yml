@@ -1,0 +1,14 @@
+
+server:
+  port: 8081
+  servlet.context-path: /v3/user
+
+app:
+  id: user
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: application
+  meta: http://106.13.1.171:8080/
+  cacheDir: /app/war/apollo/temp/
+
