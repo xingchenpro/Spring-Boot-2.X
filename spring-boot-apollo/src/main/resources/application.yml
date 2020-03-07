@@ -4,11 +4,12 @@ server:
   servlet.context-path: /v3/user
 
 app:
-  id: user
+  id: user-service
+
 apollo:
   bootstrap:
     enabled: true
     namespaces: application
-  meta: http://106.13.1.171:8080/
+  meta: http://106.13.1.171:8080
   cacheDir: /app/war/apollo/temp/
 

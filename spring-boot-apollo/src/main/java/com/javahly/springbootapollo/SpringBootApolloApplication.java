@@ -11,5 +11,4 @@ public class SpringBootApolloApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootApolloApplication.class, args);
 	}
-
 }
