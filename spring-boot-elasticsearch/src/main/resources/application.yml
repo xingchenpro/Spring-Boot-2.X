@@ -1,0 +1,5 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-name: hly
+      cluster-nodes: 106.13.1.171:9300

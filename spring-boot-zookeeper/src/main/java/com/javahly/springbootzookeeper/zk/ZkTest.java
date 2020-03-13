@@ -26,7 +26,7 @@ public class ZkTest {
          * 2、超时时间
          * 3、事件通知
          */
-        ZooKeeper zooKeeper = new ZooKeeper("106.13.1.171:2181", 5000, new Watcher() {
+        ZooKeeper zooKeeper = new ZooKeeper("106.13.1.171:2181", 2000, new Watcher() {
             @Override
             public void process(WatchedEvent watchedEvent) {
                 //获取连接状态
@@ -50,6 +50,10 @@ public class ZkTest {
          */
         String res = zooKeeper.create("/hly", "hly".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
         System.out.println(res);
-        zooKeeper.close();
+        while (true){
+
+        }
+
+       //zooKeeper.close();
     }
 }

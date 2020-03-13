@@ -42,7 +42,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         };
     }*/
 
-    //解决 Cache 存放到 Redis 数据库序列化乱码即类型无法转化问题
+    //解决 Cache 存放到 Redis 数据库序列化二进制即类型无法转化问题
     @Bean
     CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
         //初始化一个RedisCacheWriter
