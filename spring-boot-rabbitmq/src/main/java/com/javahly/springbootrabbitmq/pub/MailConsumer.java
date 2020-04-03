@@ -1,5 +1,6 @@
-package com.javahly.springbootrabbitmq.rabbit;
+package com.javahly.springbootrabbitmq.pub;
 
+import com.javahly.springbootrabbitmq.rabbit.RabitMQConnection;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
@@ -14,28 +15,35 @@ import java.util.concurrent.TimeoutException;
  * @QQ :1136513099
  * @desc :
  */
-public class Consumer {
+public class MailConsumer {
 
+    /**
+     * 定义邮件队列
+     */
     private static final String QUEUE_NAME = "myQueue";
+    /**
+     * 定义交换机的名称
+     */
+    private static final String EXCHANGE_NAME = "myExchange";
 
     public static void main(String[] args) throws IOException, TimeoutException {
-        // 1.创建连接
+        System.out.println("邮件消费者...");
+        // 创建我们的连接
         Connection connection = RabitMQConnection.getConnection();
-        // 2.设置通道
-        Channel channel = connection.createChannel();
-        //MQ每次给消费者发送消息，必须返回ack才会继续发送消息给消费者，1秒1次
-        channel.basicQos(1);
+        // 创建我们通道
+        final Channel channel = connection.createChannel();
+        // 关联队列消费者关联队列
+        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "");
         DefaultConsumer defaultConsumer = new DefaultConsumer(channel) {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String msg = new String(body, "UTF-8");
-                System.out.println("消费者获取消息:" + msg);
-                //手动ACK，从队列中删掉
-                channel.basicAck(envelope.getDeliveryTag(),false);
+                System.out.println("邮件消费者获取消息:" + msg);
             }
         };
-        // 3.监听队列,true 默认自动签收,设置为false需要手动ack
-        channel.basicConsume(QUEUE_NAME, false, defaultConsumer);
+        // 开始监听消息 自动签收
+        channel.basicConsume(QUEUE_NAME, true, defaultConsumer);
 
     }
+
 }

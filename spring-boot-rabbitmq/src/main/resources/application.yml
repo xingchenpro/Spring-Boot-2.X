@@ -1,1 +1,13 @@
+spring:
+  rabbitmq:
+    ####连接地址
+    host: 106.13.1.171
+    ####端口号
+    port: 5672
+    ####账号
+    username: hly
+    ####密码
+    password: hly
+    ### 地址
+    virtual-host: /my_visualhost
 

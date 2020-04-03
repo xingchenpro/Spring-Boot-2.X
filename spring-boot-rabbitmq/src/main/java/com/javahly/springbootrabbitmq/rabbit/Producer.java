@@ -19,15 +19,22 @@ public class Producer {
 
     private static final String QUEUE_NAME = "myQueue";
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
         // 1.创建连接
         Connection connection = RabitMQConnection.getConnection();
         // 2.设置通道
         Channel channel = connection.createChannel();
         // 3.设置消息
         String msg = "生产者生产消息";
-        System.out.println("msg:" + msg);
-        channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
+        for (int i = 0; i < 10; i++) {
+            //开启生产者确认消息投递
+            channel.confirmSelect();
+            channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
+            //生产者确认投递成功
+            if (channel.waitForConfirms()) {
+                System.out.println("msg:" + msg);
+            }
+        }
         channel.close();
         connection.close();
     }
