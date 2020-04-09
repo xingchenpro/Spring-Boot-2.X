@@ -1,6 +1,5 @@
-package com.javahly.springbootrabbitmq.springboot;
+package com.javahly.springbootrabbitmq.deadLetter;
 
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
@@ -14,12 +13,16 @@ import org.springframework.stereotype.Component;
  * @desc :
  */
 @Component
-@RabbitListener(queues = "springboot_email_queue")
-public class FanoutEmailConsumer {
+public class OrderConsumer {
 
-    @RabbitHandler
-    public void process(String msg) {
-        System.out.println("邮件消费者消息msg:" + msg);
+    /**
+     * 监听队列回调的方法
+     *
+     * @param msg
+     */
+    @RabbitListener(queues = "order_queue")
+    public void orderConsumer(String msg) {
+        System.out.println("正常订单消费者消息msg:" + msg);
     }
 }
 

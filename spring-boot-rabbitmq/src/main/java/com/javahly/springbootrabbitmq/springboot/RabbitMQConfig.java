@@ -5,6 +5,7 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,22 +17,22 @@ import org.springframework.stereotype.Component;
  * @QQ :1136513099
  * @desc :
  */
-@Component
+@Configuration
 public class RabbitMQConfig {
 
     /**
      * 定义交换机
      */
-    private String EXCHANGE_SPRINGBOOT_NAME = "myExchange";
+    private String EXCHANGE_SPRINGBOOT_NAME = "springboot.exchange";
 
     /**
      * 短信队列
      */
-    private String FANOUT_SMS_QUEUE = "myQueue";
+    private String FANOUT_SMS_QUEUE = "springboot_sms_queue";
     /**
      * 邮件队列
      */
-    private String FANOUT_SMS_EMAIL = "youQueue";
+    private String FANOUT_SMS_EMAIL = "springboot_email_queue";
 
     /**
      * 创建短信队列

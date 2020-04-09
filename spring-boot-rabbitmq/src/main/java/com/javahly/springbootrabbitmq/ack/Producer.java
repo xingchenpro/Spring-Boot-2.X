@@ -1,7 +1,9 @@
-package com.javahly.springbootrabbitmq.rabbit;
+package com.javahly.springbootrabbitmq.ack;
 
 
-import com.rabbitmq.client.*;
+import com.javahly.springbootrabbitmq.quick.RabitMQConnection;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -17,22 +19,23 @@ import java.util.concurrent.TimeoutException;
  */
 public class Producer {
 
-    private static final String QUEUE_NAME = "myQueue";
+    private static final String QUEUE_NAME = "first_queue";
 
     public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
         // 1.创建连接
         Connection connection = RabitMQConnection.getConnection();
         // 2.设置通道
         Channel channel = connection.createChannel();
+        //开启消息确认机制
+        channel.confirmSelect();
         // 3.设置消息
-        String msg = "生产者生产消息";
+        String msg = "你好";
         for (int i = 0; i < 10; i++) {
-            //开启生产者确认消息投递
-            channel.confirmSelect();
             channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
-            //生产者确认投递成功
             if (channel.waitForConfirms()) {
-                System.out.println("msg:" + msg);
+                System.out.println("生产者投递消息成功" + msg);
+            } else {
+                System.out.println("生产者投递消息失败");
             }
         }
         channel.close();

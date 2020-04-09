@@ -1,4 +1,4 @@
-package com.javahly.springbootrabbitmq.rabbit;
+package com.javahly.springbootrabbitmq.ack;
 
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;

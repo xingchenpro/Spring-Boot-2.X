@@ -1,0 +1,37 @@
+spring:
+  rabbitmq:
+    ####连接地址
+    host: 106.13.1.171
+    ####端口号
+    port: 5672
+    ####账号
+    username: guest
+    ####密码
+    password: guest
+    ### 地址
+    virtual-host: /my_virtualhost
+    ###开启消息确认机制 confirms
+    publisher-confirms: true
+    publisher-returns: true
+    listener:
+      simple:
+        retry:
+          ####开启消费者（程序出现异常的情况下会）进行重试
+          enabled: true
+          ####最大重试次数
+          max-attempts: 5
+          ####重试间隔次数
+          initial-interval: 3000
+          ###开启ack模式
+        acknowledge-mode: manual
+  datasource:
+    url: jdbc:mysql://localhost:3306/order?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: roof
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+server:
+  port: 8080
+
+

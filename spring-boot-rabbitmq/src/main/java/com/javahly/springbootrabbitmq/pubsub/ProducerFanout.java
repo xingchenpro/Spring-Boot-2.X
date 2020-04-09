@@ -1,6 +1,6 @@
-package com.javahly.springbootrabbitmq.pub;
+package com.javahly.springbootrabbitmq.pubsub;
 
-import com.javahly.springbootrabbitmq.rabbit.RabitMQConnection;
+import com.javahly.springbootrabbitmq.quick.RabitMQConnection;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
@@ -21,7 +21,7 @@ public class ProducerFanout {
     /**
      * 定义交换机的名称
      */
-    private static final String EXCHANGE_NAME = "myExchange";
+    private static final String EXCHANGE_NAME = "hly.exchange";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         //  创建Connection
@@ -29,7 +29,7 @@ public class ProducerFanout {
         // 创建Channel
         Channel channel = connection.createChannel();
         // 通道关联交换机，true表示持久化
-        channel.exchangeDeclare(EXCHANGE_NAME, "fanout", true);
+        channel.exchangeDeclare(EXCHANGE_NAME, "direct", true);
         String msg = "发送消息";
         channel.basicPublish(EXCHANGE_NAME, "", null, msg.getBytes());
         channel.close();

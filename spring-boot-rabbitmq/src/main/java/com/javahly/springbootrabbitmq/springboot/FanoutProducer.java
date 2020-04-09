@@ -22,7 +22,7 @@ public class FanoutProducer {
     @RequestMapping("/sendMsg")
     public String sendMsg(String msg) {
         // 参数1 交换机名称 、参数2路由key  参数3 消息
-        amqpTemplate.convertAndSend("myExchange", "", msg);
+        amqpTemplate.convertAndSend("springboot.exchange", "", msg);
         return "success";
     }
 }

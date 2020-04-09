@@ -10,4 +10,22 @@ spring:
     password: hly
     ### 地址
     virtual-host: /my_visualhost
+    listener:
+      simple:
+        retry:
+          ####开启消费者（程序出现异常的情况下会）进行重试
+          enabled: true
+          ####最大重试次数
+          max-attempts: 5
+          ####重试间隔次数
+          initial-interval: 3000
 
+hly:
+  dlx:
+    exchange: dlx_exchange
+    queue: order_dlx_queue
+    routingKey: dlx
+  order:
+    exchange: order_exchange
+    queue: order_queue
+    routingKey: order
