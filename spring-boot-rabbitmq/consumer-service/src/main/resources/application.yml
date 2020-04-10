@@ -5,11 +5,11 @@ spring:
     ####端口号
     port: 5672
     ####账号
-    username: guest
+    username: hly
     ####密码
-    password: guest
+    password: hly
     ### 地址
-    virtual-host: /my_virtualhost
+    virtual-host: /my_visualhost
     ###开启消息确认机制 confirms
     publisher-confirms: true
     publisher-returns: true
@@ -32,6 +32,8 @@ spring:
 
 
 server:
-  port: 8080
+  port: 8081
+
+
 
 

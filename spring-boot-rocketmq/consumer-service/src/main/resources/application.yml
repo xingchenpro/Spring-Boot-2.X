@@ -1,0 +1,14 @@
+rocketmq:
+  ###¡¨Ω”µÿ÷∑nameServer
+  name-server: 106.13.1.171:9876;
+  producer:
+    group: transient_consumer
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/order?serverTimezone=UTC
+    username: root
+    password: roof
+    driver-class-name: com.mysql.jdbc.Driver
+server:
+  port: 8081
