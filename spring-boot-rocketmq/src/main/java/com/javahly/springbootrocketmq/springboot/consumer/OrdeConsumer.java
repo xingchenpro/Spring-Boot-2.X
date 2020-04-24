@@ -1,6 +1,6 @@
-package com.javahly.springbootrocketmq.consumer;
+package com.javahly.springbootrocketmq.springboot.consumer;
 
-import com.javahly.springbootrocketmq.entity.OrderEntity;
+import com.javahly.springbootrocketmq.springboot.entity.OrderEntity;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.stereotype.Service;

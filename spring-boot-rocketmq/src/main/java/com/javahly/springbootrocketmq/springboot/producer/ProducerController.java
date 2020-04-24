@@ -1,6 +1,6 @@
-package com.javahly.springbootrocketmq.producer;
+package com.javahly.springbootrocketmq.springboot.producer;
 
-import com.javahly.springbootrocketmq.entity.OrderEntity;
+import com.javahly.springbootrocketmq.springboot.entity.OrderEntity;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

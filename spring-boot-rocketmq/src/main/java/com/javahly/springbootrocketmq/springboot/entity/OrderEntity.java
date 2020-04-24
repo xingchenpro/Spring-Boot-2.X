@@ -1,4 +1,4 @@
-package com.javahly.springbootrocketmq.entity;
+package com.javahly.springbootrocketmq.springboot.entity;
 
 import lombok.Data;
 

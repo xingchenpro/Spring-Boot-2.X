@@ -1,5 +1,4 @@
 rocketmq:
-  ###¡¨Ω”µÿ÷∑nameServer
   name-server: 106.13.1.171:9876;
   producer:
     group: transient_producer
